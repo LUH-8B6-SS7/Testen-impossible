@@ -8,9 +8,9 @@ const loginpass = 'admin'
 
 /**
  * Retruns a new request with set des
- * @param methode: string: HTTP request methode
- * @param dest: string: the subpage - only on specific JSON-File
- * @returns XMLHttpRequest
+ * @param {string} methode: HTTP request methode
+ * @param {string} dest: the subpage - selects the varible on the server
+ * @returns {XMLHttpRequest} a new request
  */
 function getXMLHttpRequestPreset(methode, dest){
     var request = new XMLHttpRequest();
@@ -22,8 +22,8 @@ function getXMLHttpRequestPreset(methode, dest){
 
 /**
  * loads the couchdb object
- * @param key: string: key of the value
- * @returns Object on success | null on failure
+ * @param {string} key: key of the value
+ * @returns {object} Object on success | null on failure
  */
 function getRaw(key){
     return new Promise(function(promise){
@@ -45,9 +45,9 @@ function getRaw(key){
 
 /**
  * sets a value
- * @param key: string: key of the value
- * @param msg: Object with the new value and latest _rev (revision number)
- * @returns true on success | false on failure
+ * @param {string} key: key of the value
+ * @param {object} msg: Object with the new value and latest _rev (revision number)
+ * @returns {boolean} true on success | false on failure
  */
 async function put(key, msg){
     return new Promise(function(promise){
