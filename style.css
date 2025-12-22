@@ -30,11 +30,11 @@ a{
     max-width: auto;
 	padding: 16px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    
 }
 
 .highlight{
-	padding: 10px;
+	padding: 12px;
     font-size: 14px;
 	border: 2px solid black;
     border-radius: 8px;
@@ -52,12 +52,45 @@ a{
 	margin-left: auto;
 	margin-top: auto;
 	margin-bottom: auto;
-	position: relative;
 }
 
 .burgermenu{
-	width: 100%;
-	top: 100%;
-	right: 10;
-	background-color: antiquewhite;
+	display: none;;
+}
+
+.burgermenu.open{
+	margin-bottom: 20px;
+	display: block;
+}
+
+#burger-icon {
+	width: 36px;
+	height: 36px;
+	object-fit: contain;
+	display: block;
+}
+
+.stimmung-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.stimmung-btn {
+	padding: 12px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+.stimmung-btn.active {
+    background-color: mediumorchid;
+    box-shadow: 0 0 12px rgba(186, 85, 211, 0.8);
+    transform: scale(1.03);
+}
+
+/* Stil für deaktivierte Stimmungsknöpfe während eine Auswahl aktiv ist */
+.stimmung-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	filter: grayscale(20%);
 }
