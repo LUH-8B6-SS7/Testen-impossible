@@ -1,0 +1,63 @@
+body{
+	margin: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+div{
+	min-height: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+	width: 100%;
+	text-align: center;
+}
+
+.std{
+	margin: 10px;
+	padding: 10px;
+	background-color: lavender;
+	
+}
+
+.card{
+	display: felx;
+    flex-direction: column;
+    gap: 10px;
+    max-width: auto;
+	padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.highlight{
+	padding: 10px;
+    font-size: 14px;
+	border: 2px solid black;
+    border-radius: 8px;
+    background-color: antiquewhite;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.highlight:hover{
+	background-color: lightgreen;
+    transform: translateY(-2px);
+}
+
+.burger{
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	position: relative;
+}
+
+.burgermenu{
+	width: 100%;
+	top: 100%;
+	right: 10;
+	background-color: antiquewhite;
+}
