@@ -1,101 +1,58 @@
 <html>
 	<head>
-	<link rel="stylesheet" href="style.css">
-	<meta charset="UTF-8">
-		<script>
-			function senden() {
-				var input = document.getElementById("frage-input");
-				var button = document.getElementById("frage-senden");
-				if (input.value.trim() === ""){
-					return;
-				}
-				// frage senden einfügen
-				input.value = "";
-			}
-
-			document.addEventListener('DOMContentLoaded', () => {
-				const stimmungsButtons = document.querySelectorAll('.stimmung-btn');
-
-				stimmungsButtons.forEach(button => {
-					button.addEventListener('click', () => {
-						// alle anderen Buttons deaktivieren (nicht den angeklickten)
-						stimmungsButtons.forEach(b => { if (b !== button) b.disabled = true; });
-
-						// angeklickten aktivieren
-						button.classList.add('active');
-
-						// alle anderen Buttons deaktivieren (nicht den angeklickten)
-						stimmungsButtons.forEach(b => { if (b !== button) b.disabled = true; });
-
-						// nach 10 Sekunden aktiv-Klasse entfernen und Buttons wieder aktivieren
-						setTimeout(() => {
-							button.classList.remove('active');
-							stimmungsButtons.forEach(b => b.disabled = false);
-						}, 10000);
-					});
-				});
-			});
-
-			// Burger-Menu Verhalten
-			document.addEventListener('DOMContentLoaded', () => {
-				const burgerBtn = document.getElementById('burger');
-				const burgerMenu = document.getElementById('burgermenu');
-
-				burgerBtn.addEventListener('click', (e) => {
-					e.stopPropagation();
-					burgerMenu.classList.toggle('open');
-				});
-
-				document.addEventListener('click', () => {
-					burgerMenu.classList.remove('open');
-				});
-			});
-		</script>
+		<link rel="stylesheet" href="style.css">
+		<meta charset="UTF-8">
 	</head>
-		<body>
-			<div id="header" class="std card">
-				<div id="title" class="std">Testen impossible
-					<nav id="burger" class="burger">
-						<img src="menu-icon-klein.png" alt="BURGER" style="width:30%;">
-					</nav>
+	<body>
+		<div id="header" class="std card">
+			<div id="title" class="std">Testen impossible
+				<nav id="burger" class="burger">
+					<img src="menu-icon-klein.png" alt="BURGER" style="width:30%;">
+				</nav>
 
-					<div id="burgermenu" class="burgermenu">
-						<a href="" >link1</a><br>
-						<a href="" >link2</a><br>
-						<a href="" >link3</a>
-					</div>
+				<div id="burgermenu" class="burgermenu">
+					<a href="" >link1</a><br>
+					<a href="" >link2</a><br>
+					<a href="" >link3</a>
 				</div>
 			</div>
+		</div>
 
-			<div id="fragen" class="std card">
-				<h3>Fragen</h3>
+		<div id="fragen" class="std card">
+			<h3>Fragen</h3>
 
-				<input type="text" 
-				id="frage-input" 
-				style="padding: 8px;font-size: 14px;"
-				onkeydown="if (event.key === 'Enter') { event.preventDefault(); senden(); }"
-				placeholder="Deine Frage hier eingeben">
+			<input type="text" 
+			id="frage-input" 
+			style="padding: 8px;font-size: 14px;"
+			onkeydown="if (event.key === 'Enter') { event.preventDefault(); senden(); }"
+			placeholder="Deine Frage hier eingeben">
 
-				<button onclick="senden()" class="highlight" id="frage-senden">
-					Senden
-				</button>
-			</div>
-			</div>
-			
-			<div id="stimmung" class="std card">
-				<h3>Stimmungsbarometer</h3>
+			<button onclick="senden()" class="highlight" id="frage-senden">
+				Senden
+			</button>
+		</div>
+		</div>
+		
+		<div id="stimmung" class="std card">
+			<h3>Stimmungsbarometer</h3>
 
-				<div class="card stimmung-grid">
-					<button class="highlight stimmung-btn">😴 <br> 
-						Zu langsam</button>
-					<button class="highlight stimmung-btn">😵‍💫 <br> 
-						Zu schnell</button>
-					<button class="highlight stimmung-btn">🤓 <br> 
-						Hatten wir schon</button>
-					<button class="highlight stimmung-btn">🤔 <br> 
-						Nochmal bitte</button>
-					</div>
+			<div class="card stimmung-grid">
+				<button id="tooSlow" class="highlight stimmung-btn">😴 <br> 
+					Zu langsam</button>
+				<button id="tooFast" class="highlight stimmung-btn">😵‍💫 <br> 
+					Zu schnell</button>
+				<button id="repeating" class="highlight stimmung-btn">🤓 <br> 
+					Hatten wir schon</button>
+				<button id="repeat" class="highlight stimmung-btn">🤔 <br> 
+					Nochmal bitte</button>
 				</div>
 			</div>
-		</body>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="couchdb.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+	<script type="text/javascript" src="initBurgerButton.js"></script>
+    <script type="text/javascript" src="student.js"></script>
+</html>
 		

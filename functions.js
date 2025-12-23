@@ -1,9 +1,12 @@
+//Var
+const moodTimeout = 10000;  //ms
+
 /**
  * sets a value
  * @param {string} key: key of the value
  * @param {object} value: the new value
  */
-async function set(key, value) {
+async function dbSet(key, value) {
     while(true){
         var msg = await getRaw(key);
         if(msg == null){
@@ -13,6 +16,7 @@ async function set(key, value) {
         msg[key] = value;
 
         if( await put(key, msg) ) break;
+        console.log("Put failed. Trying again!");
     }
 }
 
@@ -21,7 +25,7 @@ async function set(key, value) {
  * @param {string} key: key of the value
  * @returns {object | null} Value on success | null on failure
  */
-async function get(key){
+async function dbGet(key){
     var response = await getRaw(key);
     if(response == null) return null;
     else return response[key];
@@ -32,7 +36,7 @@ async function get(key){
  * @param {string} key: key of the value
  * @param {object} value: the new value
  */
-async function add(key, value){
+async function dbAdd(key, value){
     while(true){
         var msg = await getRaw(key);
         if(msg == null){
@@ -43,6 +47,7 @@ async function add(key, value){
         msg[key].push(value);
 
         if( await put(key, msg) ) break;
+        console.log("Put failed. Trying again!");
     }
 }
 
@@ -51,19 +56,32 @@ async function add(key, value){
  * @param {string} key: key of the value
  * @param {object} value: the object to remove
  */
-async function remove(key, value){
+async function dbRemove(key, value){
     while(true){
         var msg = await getRaw(key);
         if(msg == null) break;
 
-        var index = msg[key].indexOf(value);
-        if(index == -1) break;  //value not in list
+        /*
+        //find index not good
+        var index = -1;
+        for(i = 0; i < msg[key].length; i++){
+            if(JSON.stringify(msg[key][i]) === JSON.stringify(value)){ index = i; break; }
+        }
+        if(index == -1) break;
+
         msg[key].splice(index, 1);
+        */
+        
+        if(removeFromList(msg[key], value) == null) break;
 
         if( await put(key, msg) ) break;
+        console.log("Put failed. Trying again!");
     }
 }
 
+
+
+//--------- update on interval ---------
 var interval = setInterval(update, 1000);
 var intervalFunctionList = [];
 
@@ -80,9 +98,12 @@ function intervalSubscribe(f){
  * @param {function} f 
  */
 function intervalWithdraw(f){
+    /*
     var index = intervalFunctionList.indexOf(f);
-    if(index == -1) return;  //value not in list
+    if(index == -1) return;
     intervalFunctionList.splice(index, 1);
+    */
+    removeFromList(intervalFunctionList, f);
 }
 
 /**
@@ -92,4 +113,31 @@ function update(){
     for(i = 0; i < intervalFunctionList.length; i++){
         intervalFunctionList[i]();
     }
+}
+
+
+
+//--------- other util ---------
+/**
+ * removes the given item from the list, if it is in it. The list itself will be modified.
+ * @param {any[]} list 
+ * @param {any} item 
+ * @returns {any} the removed item, null on failure
+ */
+function removeFromList(list, item){
+    var index = -1;
+    for(i = 0; i < list.length; i++){
+        if(JSON.stringify(list[i]) === JSON.stringify(item)){ index = i; break; }
+    }
+    if(index == -1) return null;
+
+    return list.splice(index, 1);
+}
+
+/**
+ * the current time in ms from 1.1.1970
+ * @returns {long} Timestamp
+ */
+function getTimestamp(){
+    return (new Date).getTime();
 }

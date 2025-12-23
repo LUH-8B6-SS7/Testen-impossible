@@ -8,6 +8,7 @@ var localCounter = 0;
  */
 function updateMyVar(){
     console.log("Hello there! " + localCounter);
+    console.log(getTimestamp());
     localCounter++;
     if(localCounter >= 10){
         intervalWithdraw(updateMyVar);
@@ -18,13 +19,13 @@ function updateMyVar(){
  * this function shows a short example on how to use the functions get/set and add/remove
  */
 async function example(){
-    await set("myVar", 5);
+    await dbSet("myVar", 5);
 
-    var list = await get("myList");
+    var list = await dbGet("myList");
     var length = 0;
     if(list != null) length = list.length;
-    await add("myList", "list element " + length);
+    await dbAdd("myList", "list element " + length);
 
-    console.log(await get("myVar"));
-    console.log(await get("myList"));
+    console.log(await dbGet("myVar"));
+    console.log(await dbGet("myList"));
 };

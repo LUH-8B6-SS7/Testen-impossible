@@ -2,74 +2,22 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
-        <script>
-                // Burger-Menu Verhalten
-                document.addEventListener('DOMContentLoaded', () => {
-                    const burgerBtn = document.getElementById('burger');
-                    const burgerMenu = document.getElementById('burgermenu');
-
-                    burgerBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        burgerMenu.classList.toggle('open');
-                    });
-
-                    document.addEventListener('click', () => {
-                        burgerMenu.classList.remove('open');
-                    });
-                });
-
-            	function erhöheBalken(id){
-                    const meinElement = document.getElementById(id);
-                    let aktuelleHoehe = parseInt(meinElement.style.width) || 0;
-                    let neueHoehe = aktuelleHoehe + 20;
-
-                    const diagramm= document.getElementById('diagramm');
-                    max = diagramm.offsetWidth;
-                    if (neueHoehe > (max - 130)) {//130 ist ungefähre größe des labels, habe keinen effizienten weg zur berechnung gefunden
-                        neueHoehe = max;
-                    }else{
-                        meinElement.style.width = neueHoehe + "px"; 
-                    }
-                }
-
-                function verkürzeBalken(id){
-                    const meinElement = document.getElementById(id);
-                    let aktuelleHoehe = parseInt(meinElement.style.width);
-                    let neueHoehe = aktuelleHoehe - 20;
-                    if (neueHoehe < 0) {
-                        neueHoehe = 0;
-                    }
-                    meinElement.style.width = neueHoehe + "px"; 
-                }
-
-                function anzeigen(){
-                    const inputFeld = document.getElementById('quelle');
-                    const anzeigeFeld = document.getElementById('ziel');
-                    anzeigeFeld.textContent = inputFeld.value;
-                    inputFeld.value = '';//mit testbereich entfernen
-                }
-
-                function reset(){
-                    const anzeigeFeld = document.getElementById('ziel');
-                    anzeigeFeld.textContent = '';
-                }
-        </script>
     </head>
     <body>
         <div id="header" class="std card">
-				<div id="title" class="std">
-                    <h3>Testen impossible</h3>
-					<nav id="burger" class="burger">
-						<img src="menu-icon-klein.png" alt="BURGER" style="width:30%;">
-					</nav>
+            <div id="title" class="std">
+                <h3>Testen impossible</h3>
+                <nav id="burger" class="burger">
+                    <img src="menu-icon-klein.png" alt="BURGER" style="width:30%;">
+                </nav>
 
-					<div id="burgermenu" class="burgermenu">
-						<a href="" >link1</a><br>
-						<a href="" >link2</a><br>
-						<a href="" >link3</a>
-					</div>
-				</div>
-			</div>
+                <div id="burgermenu" class="burgermenu">
+                    <a href="" >link1</a><br>
+                    <a href="" >link2</a><br>
+                    <a href="" >link3</a>
+                </div>
+            </div>
+        </div>
 
         <div id="fragen" class="card std">
             <h3>Fragen</h3>
@@ -124,4 +72,9 @@
 				placeholder="Deine Frage hier eingeben">
         </div>
     </body>
+
+    <script type="text/javascript" src="couchdb.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+	<script type="text/javascript" src="initBurgerButton.js"></script>
+    <script type="text/javascript" src="lecture.js"></script>
 </html>    

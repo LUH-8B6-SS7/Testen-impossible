@@ -57,8 +57,10 @@ async function put(key, msg){
         //Response handling
         request.onreadystatechange = function(){
             if(this.readyState == this.DONE){
-                if(this.status == 400){ promise(false); }  //400 = Bad Request - _rev is most likly old
-                else{ promise(true); }  
+                if(this.status == 200 || this.status == 201){ promise(true); }  //success
+                else{ promise(false); }
+                //400 = Bad Request
+                //409 = Conflict - _rev is most likly old
             }
         };
         
