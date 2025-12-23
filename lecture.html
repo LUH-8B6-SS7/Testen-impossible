@@ -2,6 +2,58 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
+        <script>
+                // Burger-Menu Verhalten
+                document.addEventListener('DOMContentLoaded', () => {
+                    const burgerBtn = document.getElementById('burger');
+                    const burgerMenu = document.getElementById('burgermenu');
+
+                    burgerBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        burgerMenu.classList.toggle('open');
+                    });
+
+                    document.addEventListener('click', () => {
+                        burgerMenu.classList.remove('open');
+                    });
+                });
+
+            	function erhöheBalken(id){
+                    const meinElement = document.getElementById(id);
+                    let aktuelleHoehe = parseInt(meinElement.style.width) || 0;
+                    let neueHoehe = aktuelleHoehe + 20;
+
+                    const diagramm= document.getElementById('diagramm');
+                    max = diagramm.offsetWidth;
+                    if (neueHoehe > (max - 130)) {//130 ist ungefähre größe des labels, habe keinen effizienten weg zur berechnung gefunden
+                        neueHoehe = max;
+                    }else{
+                        meinElement.style.width = neueHoehe + "px"; 
+                    }
+                }
+
+                function verkürzeBalken(id){
+                    const meinElement = document.getElementById(id);
+                    let aktuelleHoehe = parseInt(meinElement.style.width);
+                    let neueHoehe = aktuelleHoehe - 20;
+                    if (neueHoehe < 0) {
+                        neueHoehe = 0;
+                    }
+                    meinElement.style.width = neueHoehe + "px"; 
+                }
+
+                function anzeigen(){
+                    const inputFeld = document.getElementById('quelle');
+                    const anzeigeFeld = document.getElementById('ziel');
+                    anzeigeFeld.textContent = inputFeld.value;
+                    inputFeld.value = '';//mit testbereich entfernen
+                }
+
+                function reset(){
+                    const anzeigeFeld = document.getElementById('ziel');
+                    anzeigeFeld.textContent = '';
+                }
+        </script>
     </head>
     <body>
         <div id="header" class="std card">
@@ -21,9 +73,55 @@
 
         <div id="fragen" class="card std">
             <h3>Fragen</h3>
+            <div id="ziel" class="card std" style="background-color:white;"></div>
+            <div style="margin-left: auto;">
+                <button id="gelesen" class="highlight" style="max-width:100px;" onclick="reset()">Gelesen</button>
+            </div>
         </div>
+
         <div id="stimmung" class="card std">
             <h3>Stimmungsbarometer</h3>
+            <div id="diagramm" class="card bar-container">
+                <div class="bar-row">
+                    <div class="bar-label">Zu langsam</div>
+                    <div id="balken1" class="bar" style="width: 10px;"></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Zu schnell</div>
+                    <div id="balken2" class="bar" style="width: 10px;"></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">hatten wir schon</div>
+                    <div id="balken3" class="bar" style="width: 10px;"></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">nochmal bitte</div>
+                    <div id="balken4" class="bar" style="width: 10px;"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            Testen:
+            wachsen
+            <div class="stimmung-grid">
+                <button onclick="erhöheBalken('balken1')">Balken 1</button>
+                <button onclick="erhöheBalken('balken2')">Balken 2</button>
+                <button onclick="erhöheBalken('balken3')">Balken 3</button>
+                <button onclick="erhöheBalken('balken4')">Balken 4</button> 
+            </div>
+            <br>
+            schrumpfen
+            <div class="stimmung-grid">
+                <button onclick="verkürzeBalken('balken1')">Balken 1</button>
+                <button onclick="verkürzeBalken('balken2')">Balken 2</button>
+                <button onclick="verkürzeBalken('balken3')">Balken 3</button>
+                <button onclick="verkürzeBalken('balken4')">Balken 4</button>  
+            </div>
+            <input type="text" 
+				id="quelle" 
+				style="padding: 8px;font-size: 14px;"
+				onkeydown="if (event.key === 'Enter') { event.preventDefault(); anzeigen(); }"
+				placeholder="Deine Frage hier eingeben">
         </div>
     </body>
 </html>    
