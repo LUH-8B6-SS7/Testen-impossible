@@ -1,19 +1,65 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="style.css">
 		<meta charset="UTF-8">
+		<style> /*Extra Styling für das Burger-Menu*/
+
+			#header {
+    			display: flex;
+    			justify-content: space-between;
+    			align-items: center;
+				position: relative;
+			}
+
+			#title {
+    			display: flex;
+    			align-items: center;
+				flex-grow: 1;
+			}
+
+			#burger {
+				position: absolute; /* Absolut Position in der Div */
+        		left: 10px; /* Abstand zum linken Rand */
+        		margin-top: 15px; /* Abstand nach Oben */
+			}
+
+			.burgermenu {
+    			display: none;
+				position: relative;
+				font-weight: bold;
+			}
+
+			.burgermenu a {
+				display: block;
+				margin-bottom: 10px;
+			}
+
+			.burgermenu a:last-child {
+				margin-bottom: 0px;
+			}
+
+			.burgermenu , .burgermenu a {
+				text-align: left;
+				padding-left: 10px;
+				left: -48%;
+			}
+
+		</style>
 	</head>
 	<body>
 		<div id="header" class="std card">
-			<div id="title" class="std">Testen impossible
-				<nav id="burger" class="burger">
-					<img src="menu-icon-klein.png" alt="BURGER" style="width:30%;">
-				</nav>
+			<nav id="burger" class="burger" onclick="toggleMenu()">
+				<img src="menu-icon-open.png" alt="BURGER" style="width:30%;">
+			</nav>
 
-				<div id="burgermenu" class="burgermenu">
-					<a href="" >link1</a><br>
-					<a href="" >link2</a><br>
-					<a href="" >link3</a>
+			<div id="title" class="std">Testen impossible </div>
+
+				<div id="burgermenu" class="burgermenu" style="display: none;">
+					<a href="" >Beitereten</a><br>
+					<a href="" >Fragenpool</a><br>
+					<a href="" >Feedback</a><br>
+					<a href="QRCode.png" target="_blank"> QR-Code </a>
 				</div>
 			</div>
 		</div>
@@ -54,5 +100,20 @@
     <script type="text/javascript" src="functions.js"></script>
 	<script type="text/javascript" src="initBurgerButton.js"></script>
     <script type="text/javascript" src="student.js"></script>
+	<script> 
+		function toggleMenu() { //Skript für das wechseln des Bildes für das Burger-Menu
+    		const menu = document.getElementById('burgermenu');
+    		const image = document.getElementById('burger').firstElementChild;
+
+    		if (menu.style.display === "none" || menu.style.display === "") {
+        		menu.style.display = "block";
+        		image.src = "menu-icon-closed.png";
+    		} else {
+        		menu.style.display = "none";
+        		image.src = "menu-icon-open.png";
+    		}
+		}
+	</script>
+
 </html>
 		
