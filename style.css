@@ -47,7 +47,7 @@ a{
 	background-color: lightgreen;
     transform: translateY(-2px);
 }
-
+/*
 .burger{
 	margin-left: auto;
 	margin-top: auto;
@@ -68,6 +68,48 @@ a{
 	height: 36px;
 	object-fit: contain;
 	display: block;
+}
+*/
+/*Extra Styling für das Burger-Menu*/
+
+#header {
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+	flex-grow: 1;
+}
+
+#burger {
+	position: absolute; /* Absolut Position in der Div */
+    left: 10px; /* Abstand zum linken Rand */
+    margin-top: 15px; /* Abstand nach Oben */
+}
+
+.burgermenu {
+	display: none;
+	position: relative;
+	font-weight: bold;
+}
+
+.burgermenu a {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.burgermenu a:last-child {
+	margin-bottom: 0px;
+}
+
+.burgermenu , .burgermenu a {
+	text-align: left;
+	padding-left: 10px;
+	left: -48%;
 }
 
 .stimmung-grid {
