@@ -28,12 +28,17 @@ function init(){
 }
 
 
-function senden() {
+async function senden() {
 	var input = document.getElementById("frage-input");
-	var button = document.getElementById("frage-senden");
+	
 	if (input.value.trim() === ""){
 		return;
 	}
-	// frage senden einfügen
+	
+	dbAdd("questionPool", {
+		"question": input.value.trim(),
+		"answered": false
+	});
+
 	input.value = "";
 }

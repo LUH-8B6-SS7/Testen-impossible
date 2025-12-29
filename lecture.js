@@ -1,4 +1,5 @@
 intervalSubscribe(updateMood);
+intervalSubscribe(updateQuestionPool);
 
 async function updateMood(){
     var moodList = await dbGet("moodList");
@@ -15,8 +16,51 @@ async function updateMood(){
         else{ result[mood["option"]]++; }
     });
 
-    //ToDo: set diagram acording to result
-    console.log(result);
+    var maxWidth = document.getElementById("diagramm").clientWidth;
+    document.getElementById("balken1").style.width = result["tooSlow"] < 10 ? result["tooSlow"]/10 * maxWidth : maxWidth;
+    document.getElementById("balken2").style.width = result["tooFast"] < 10 ? result["tooFast"]/10 * maxWidth : maxWidth;
+    document.getElementById("balken3").style.width = result["repeating"] < 10 ? result["repeating"]/10 * maxWidth : maxWidth;
+    document.getElementById("balken4").style.width = result["repeat"] < 10 ? result["repeat"]/10 * maxWidth : maxWidth;
+}
+
+async function updateQuestionPool(){
+    var questions = await dbGet("questionPool");
+    if(questions === null) return;
+
+    var list = document.getElementById("ziel");
+    list.innerHTML = '';
+
+    questions.forEach(question => {
+        if(!question["answered"]){
+            var div = document.createElement("div");
+            div.innerHTML = question["question"];
+            div.addEventListener('click', () => {
+                selectedQuestion = div;
+            });
+            list.appendChild(div);
+        }
+    });
+}
+
+var selectedQuestion = null;
+
+async function setQuestionToRead(){
+    if(selectedQuestion === null) return;
+
+    var questions = await dbGet("questionPool");
+    if(questions === null) return;
+
+    for(i = 0; i < questions.length; i++){
+        var question = questions[i];
+        if(selectedQuestion.innerHTML == question["question"] && !question["answered"]){
+            await dbRemove("questionPool", question);
+            question["answered"] = true;
+            await dbAdd("questionPool", question);
+
+            selectedQuestion = null;
+            break;
+        }
+    }
 }
 
 function erhöheBalken(id){
@@ -48,9 +92,4 @@ function anzeigen(){
     const anzeigeFeld = document.getElementById('ziel');
     anzeigeFeld.textContent = inputFeld.value;
     inputFeld.value = '';//mit testbereich entfernen
-}
-
-function reset(){
-    const anzeigeFeld = document.getElementById('ziel');
-    anzeigeFeld.textContent = '';
 }

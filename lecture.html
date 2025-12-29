@@ -67,7 +67,7 @@
             <h3>Fragen</h3>
             <div id="ziel" class="card std" style="background-color:white;"></div>
             <div style="margin-left: auto;">
-                <button id="gelesen" class="highlight" style="max-width:100px;" onclick="reset()">Gelesen</button>
+                <button id="gelesen" class="highlight" style="max-width:100px;" onclick="setQuestionToRead()">Gelesen</button>
             </div>
         </div>
 
@@ -114,6 +114,7 @@
 				style="padding: 8px;font-size: 14px;"
 				onkeydown="if (event.key === 'Enter') { event.preventDefault(); anzeigen(); }"
 				placeholder="Deine Frage hier eingeben">
+			<button onclick="update()">update</button>
         </div>
     </body>
 
