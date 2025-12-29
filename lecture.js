@@ -93,3 +93,16 @@ function anzeigen(){
     anzeigeFeld.textContent = inputFeld.value;
     inputFeld.value = '';//mit testbereich entfernen
 }
+
+function toggleMenu() { //Skript für das wechseln des Bildes für das Burger-Menu
+    		const menu = document.getElementById('burgermenu');
+    		const image = document.getElementById('burger').firstElementChild;
+
+    		if (menu.style.display === "none" || menu.style.display === "") {
+        		menu.style.display = "block";
+        		image.src = "menu-icon-closed.png";
+    		} else {
+        		menu.style.display = "none";
+        		image.src = "menu-icon-open.png";
+    		}
+		}
