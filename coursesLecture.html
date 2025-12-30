@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="courses.css">
+
+    </head>
+    <body>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <h2>Neuen Kurs hinzufügen</h2>
+                <input type="text" id="newCourseName" placeholder="Geben Sie den Kursnamen ein">
+            </div>
+            <div class="modal-button">
+                <button id="addCourseButton" onclick="addCourse()">Hinzufügen</button>
+                <button id="cancleCourseButton" onclick="closeModal()">Abbruch</button>
+            </div>
+        </div>
+
+        <div id="courses" class="card std">
+
+            <div id="header" class="std card">
+
+			    <div id="title" class="std">Kursliste</div>
+
+		    </div>
+
+
+            <h3>Meine Kurse</h3>
+            <div>
+
+                <table>
+
+			        <tr id="table_head">
+				        <th>Kurse</th>
+				        <th>Teilnehmer</th>
+			        </tr>
+			        <tr>
+                        <td id="table_left"><a href="student.html">Grundlagen der Software-Technik</a></a></th>
+				        <td id="table_right">360</th>
+			        </tr>
+			        <tr>
+                        <td id="table_left"><a href="student.html">Grundlagen der IT-Sicherheit</a></th>
+				        <td id="table_right">348</th>
+			        </tr>
+			        <tr>
+                        <td id="table_left"><a href="student.html">Statistische Methoden der Data Science</a></th>
+				        <td id="table_right">217</th>
+			        </tr>
+			        <tr>
+                        <td id="table_left"><a href="student.html">Grundlagen der Mensch-Computer-Interaktion</a></th>
+				        <td id="table_right">358</th>
+			        </tr>
+			        <tr>
+                        <td id="table_left"><a href="student.html">Grundlagen der Theoretischen Informatik</a></th>
+				        <td id="table_right">471</th>
+			        </tr>
+                    <tr>
+                        <td id="table_left"><a href="student.html">Grundlagen der Betriebssysteme</a></th>
+				        <td id="table_right">381</th>
+			        </tr>
+
+                </table>
+
+                <button id="add" onclick="addNewCourse()">Hinzufügen +</button>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="couchdb.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+	<script type="text/javascript" src="initBurgerButton.js"></script>
+    <script type="text/javascript" src="lecture.js"></script>
+    <script type="text/javascript" src="courses.js"></script>
+</html>
