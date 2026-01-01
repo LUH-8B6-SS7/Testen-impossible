@@ -1,8 +1,8 @@
-<html>
+<!DOCTYPE html>
     <head>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="lecture.css">
         <meta charset="UTF-8">
-        <link href="lecture.css">
     </head>
     <body>
         <div id="header" class="std card">
@@ -18,14 +18,13 @@
 					<a href="" >Feedback</a><br>
 					<a href="QRCode.png" target="_blank"> QR-Code </a>
 				</div>
-			</div>
 		</div>
-
+        
         <div id="fragen" class="card std">
             <h3>Fragen</h3>
-            <div id="ziel" class="card std" style="background-color:white;"></div>
+            <div id="ziel" class="card std" type="text" style="background-color: white;"></div>
             <div style="margin-left: auto;">
-                <button id="gelesen" class="highlight" style="max-width:100px;" onclick="setQuestionToRead()">Gelesen</button>
+                <button id="gelesen" class="highlight" style="max-width:100px;" onclick="reset()">Gelesen</button>
             </div>
         </div>
 
@@ -72,7 +71,6 @@
 				style="padding: 8px;font-size: 14px;"
 				onkeydown="if (event.key === 'Enter') { event.preventDefault(); anzeigen(); }"
 				placeholder="Deine Frage hier eingeben">
-			<button onclick="update()">update</button>
         </div>
     </body>
 
@@ -80,5 +78,4 @@
     <script type="text/javascript" src="functions.js"></script>
 	<script type="text/javascript" src="initBurgerButton.js"></script>
     <script type="text/javascript" src="lecture.js"></script>
-
 </html>    

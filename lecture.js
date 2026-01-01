@@ -94,6 +94,11 @@ function anzeigen(){
     inputFeld.value = '';//mit testbereich entfernen
 }
 
+function reset(){
+    const anzeigeFeld = document.getElementById('ziel');
+    if (anzeigeFeld) anzeigeFeld.innerHTML = '';
+}
+
 function toggleMenu() { //Skript für das wechseln des Bildes für das Burger-Menu
     		const menu = document.getElementById('burgermenu');
     		const image = document.getElementById('burger').firstElementChild;
