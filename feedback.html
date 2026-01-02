@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Impossible</title>
+    <link rel="Stylesheet" href="style.css">
+    <link rel="Stylesheet" href="feedbackstyle.css">
+</head>
+<body>
+    <div id="fb" class="popup card">
+
+    </div>
+
+    <div id="addfb" class="popup card">
+        <p> Neue Feedback-karte schreiben </p>
+        <input id="feedbackName" type="text" placeholder="Überschrift" >
+        <textarea id="feedbackcontent" rows="6" placeholder="Inhalt"></textarea>
+        <div class="buttons">
+            <button id="AddFeedbackbutton" onclick="makefeedback()" > Hinzufügen </button>
+            <button id="Returnbutton" onclick="closefeedback()" > Zurück </button>
+        </div>
+    </div>
+    
+        
+
+        <div id="header" class="std card">
+            <div id="title" class="std">Feedback-Tool</div>
+        </div>
+
+        <div id="flex-container" class="card std cards">
+            <div onclick="showFeedback()" class="post">
+                <div class="container">
+                    <p>Feedback 1</p>
+                </div>
+            </div>
+            <div onclick="showFeedback()" class="post">
+                <div class="container">
+                    <p>Feedback 2</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="foot" class="box std">
+            <button id="adder" onclick="addfeedback()">Feedback-karte Hinzufügen</button>
+        </div>
+    
+    
+    
+</body>
+
+<script type="text/javascript" src="couchdb.js"></script>
+<script type="text/javascript" src="functions.js"></script>
+<script type="text/javascript" src="initBurgerButton.js"></script>
+
+<script type="text/javascript" src="feedback.js"></script>
+</html>
+

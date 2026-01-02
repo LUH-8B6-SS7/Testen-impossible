@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    font-family: "Arial Black", sans-serif;
+}
+#foot {
+    display: flex;
+    justify-content: flex-start;
+}
+.box{
+	display: flex;
+    flex-direction: row;
+    gap: 10px;
+    max-width: auto;
+	padding: 16px;
+    border-radius: 12px;
+    
+}
+.post {
+    background-color: rgba(174, 174, 174, 0.763);
+}
+.cards :hover{
+        box-shadow: 0 6px 11px 0 rgba(0, 0, 0, 0.35), 0 8px 23px 0 rgba(0, 0, 0, 0.19);
+        background-color: rgba(174, 174, 174, 0.763);
+}
+.container {
+        padding: 10px;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: clip;
+        font-size: large;
+        white-space: nowrap;
+        pointer-events: none;
+}
+#flex-container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        justify-content: space-around;
+}
+/* Add Feedback Button */
+#adder {
+    background-color: rgba(19, 171, 19, 0.75);
+    color: #000;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: background-color 0.3s;
+  
+}
+#adder:hover {
+    background-color: rgba(19, 171, 19, 0.65);
+    color: rgba(0,0,0,0.75);
+}
+/* Alles mit Popups von Feedback */
+.popup {
+    display:none;
+}
+
+#fb {
+    background-color: lightgray;
+}
+/* Feedback schreiben */
+#addfb {
+    position:fixed;
+    top:30%;
+    right:33%;
+    background-color: rgb(204, 238, 255);
+    width:33%;
+    height:40%;
+    flex-direction: column;
+}
+.buttons {
+    margin: 10px;
+    
+    align-items: left;
+}
+#AddFeedbackbutton {
+    background-color: rgba(19, 171, 19, 0.75);
+    margin-right: 7px;
+    font-size: 17px;
+    width: 200px;
+}
+#AddFeedbackbutton:hover {
+    background-color: rgba(87, 182, 87, 0.75);
+}
+#Returnbutton {
+    background-color: rgba(171, 19, 19, 0.75);
+    margin-left: 12px;
+    font-size: 17px;
+    width: 200px;
+}
+#Returnbutton:hover {
+    background-color: rgba(174, 94, 94, 0.75);
+}
+/* Blocken von Hover/Click während Popup offen ist */
+.blocked {
+    
+    pointer-events:none;
+}
