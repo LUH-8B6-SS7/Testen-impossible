@@ -7,7 +7,12 @@
 </head>
 <body>
     <div id="fb" class="popup card">
-
+        <h2 id='popupheader' class="content">  </h2>    
+        <p id='popupcontent' class="content">  </p>
+        <div class="buttons">
+            <button id="Returnbutton" onclick="closefeedback()" class="uniqueButton" > Zurück </button>
+        </div>
+        
     </div>
 
     <div id="addfb" class="popup card">
@@ -16,7 +21,7 @@
         <textarea id="feedbackcontent" rows="6" placeholder="Inhalt"></textarea>
         <div class="buttons">
             <button id="AddFeedbackbutton" onclick="makefeedback()" > Hinzufügen </button>
-            <button id="Returnbutton" onclick="closefeedback()" > Zurück </button>
+            <button id="Returnbutton" onclick="cancelfeedback()" > Abbruch </button>
         </div>
     </div>
     
@@ -27,14 +32,16 @@
         </div>
 
         <div id="flex-container" class="card std cards">
-            <div onclick="showFeedback()" class="post">
+            <div onclick="showFeedback('1.1','1.2')" class="post">
                 <div class="container">
-                    <p>Feedback 1</p>
+                    <p id="1.1">Feedback 1</p>
+                    <p id="1.2" class="content">figwefgihhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhh h h h hh h h h hh h hh h hh h hh h hh  hh hh h hhhhhg g g g g</p>
                 </div>
             </div>
-            <div onclick="showFeedback()" class="post">
+            <div onclick="showFeedback('2.1', '2.2')" class="post">
                 <div class="container">
-                    <p>Feedback 2</p>
+                    <p id="2.1">Feedback 2</p>
+                    <p id="2.2" class="content">Sehr sinnvolles Feedback, welches den Kurs voranbringt</p>
                 </div>
             </div>
         </div>

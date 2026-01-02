@@ -60,17 +60,39 @@
 }
 
 #fb {
-    background-color: lightgray;
+    position:fixed;
+    top:30%;
+    right:33%;
+    background-color: rgb(255, 255, 255);
+    width:33%;
+    min-height:auto;
+    flex-direction: column;
+    border: 1px solid #888;
+    border-radius: 7px;
+    
+}
+.content {
+    display: none;
+}
+.uniqueButton {
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: 0;
 }
 /* Feedback schreiben */
 #addfb {
     position:fixed;
     top:30%;
     right:33%;
-    background-color: rgb(204, 238, 255);
+    background-color: rgb(255, 255, 255);
     width:33%;
     height:40%;
     flex-direction: column;
+    border: 1px solid #888;
+    border-radius: 7px;
+}
+textarea {
+    resize: none;
 }
 .buttons {
     margin: 10px;
