@@ -15,7 +15,7 @@ function addCourse() {
     var newRow = table.insertRow();
     var cell1 = newRow.insertCell(0);
     var cell2 = newRow.insertCell(1);
-    cell1.innerHTML = `<a href="student.html">${courseName}</a>`;
+    cell1.innerHTML = `<a href="lecture.html">${courseName}</a>`;
     cell2.innerHTML = "0"; // Default Teilnehmerzahl
     document.getElementById('newCourseName').value = '';
     closeModal();
