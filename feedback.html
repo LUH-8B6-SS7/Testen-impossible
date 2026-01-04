@@ -28,8 +28,18 @@
         
 
         <div id="header" class="std card">
-            <div id="title" class="std">Feedback-Tool</div>
-        </div>
+			<nav id="burger" class="burger" onclick="toggleMenu()">
+				<img src="menu-icon-open.png" alt="BURGER" style="width:30%;">
+			</nav>
+
+			<div id="title" class="std">Feedback</div>
+
+				<div id="burgermenu" class="burgermenu" style="display: none;">
+					<a href="courses.html" >Beitreten</a><br>
+					<a href="" >Fragenpool</a><br>
+					<a href="feedback.html" >Feedback</a>
+				</div>
+		</div>
 
         <div id="flex-container" class="card std cards">
             <div onclick="showFeedback('1.1','1.2')" class="post">
