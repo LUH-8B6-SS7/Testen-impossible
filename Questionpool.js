@@ -1,4 +1,4 @@
-  <script>
+  
     // 1. ROLLEN-LOGIK
     const params = new URLSearchParams(window.location.search);
     const isDozent = params.get('role') === 'dozent';
@@ -129,4 +129,3 @@
     }
 
     render();
-</script>

@@ -1,4 +1,4 @@
-<style>
+
         :root {
             --primary: #0056b3;
             --secondary: #6c757d;
@@ -113,4 +113,3 @@
         .hidden { display: none; }
         
         .meta-info { font-size: 0.75rem; color: #888; }
-    </style>
