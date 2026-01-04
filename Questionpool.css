@@ -1,0 +1,116 @@
+<style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --danger: #dc3545;
+            --bg: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .student-badge { background: #e3f2fd; color: #0d47a1; }
+        .dozent-badge { background: #e8f5e9; color: #1b5e20; }
+
+        .card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+            resize: none;
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            transition: opacity 0.2s;
+            font-weight: 500;
+        }
+
+        button:hover { opacity: 0.8; }
+
+        .btn-send { background: var(--primary); color: white; width: 100%; margin-top: 10px; }
+        .btn-done { background: var(--success); color: white; }
+        .btn-delete { background: var(--danger); color: white; }
+        
+        .vote-btn {
+            background: #eee;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .vote-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .question-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .question-item.answered {
+            opacity: 0.6;
+            background-color: #fcfcfc;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            margin: 0;
+            color: #333;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .hidden { display: none; }
+        
+        .meta-info { font-size: 0.75rem; color: #888; }
+    </style>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni-Live Feedback Tool</title>
+	<link rel="stylesheet" href="Questionpool.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div id="roleBadge" class="badge">Lade Modus...</div>
+        <h1>Fragen-Pool</h1>
+    </div>
+
+    <div id="inputSection" class="card">
+        <textarea id="questionInput" placeholder="Stelle eine Frage an den Dozenten..."></textarea>
+        <button class="btn-send" onclick="addQuestion()">Frage absenden</button>
+    </div>
+
+    <div class="card">
+        <div id="questionList"></div>
+    </div>
+</div>
+
+
+</script src="Questionpool.js"></script>
+</body>
+</html>
