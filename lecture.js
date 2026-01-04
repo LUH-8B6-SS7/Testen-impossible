@@ -17,10 +17,12 @@ async function updateMood(){
     });
 
     var maxWidth = document.getElementById("diagramm").clientWidth;
-    document.getElementById("balken1").style.width = result["tooSlow"] < 10 ? result["tooSlow"]/10 * maxWidth : maxWidth;
-    document.getElementById("balken2").style.width = result["tooFast"] < 10 ? result["tooFast"]/10 * maxWidth : maxWidth;
-    document.getElementById("balken3").style.width = result["repeating"] < 10 ? result["repeating"]/10 * maxWidth : maxWidth;
-    document.getElementById("balken4").style.width = result["repeat"] < 10 ? result["repeat"]/10 * maxWidth : maxWidth;
+    document.getElementById("balken1").style.width = (result["tooSlow"] < 10 ? result["tooSlow"]/10 * maxWidth : maxWidth) + "px";
+    document.getElementById("balken2").style.width = (result["tooFast"] < 10 ? result["tooFast"]/10 * maxWidth : maxWidth) + "px";
+    document.getElementById("balken3").style.width = (result["repeating"] < 10 ? result["repeating"]/10 * maxWidth : maxWidth) + "px";
+    document.getElementById("balken4").style.width = (result["repeat"] < 10 ? result["repeat"]/10 * maxWidth : maxWidth) + "px";
+
+    console.log(result["tooSlow"] < 10 ? result["tooSlow"]/10 * maxWidth : maxWidth);
 }
 
 async function updateQuestionPool(){
