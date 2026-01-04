@@ -39,7 +39,7 @@
         .student-badge { background: #e3f2fd; color: #0d47a1; }
         .dozent-badge { background: #e8f5e9; color: #1b5e20; }
 
-        .card {
+        .card2 {
             background: var(--white);
             padding: 20px;
             border-radius: 12px;
@@ -113,3 +113,4 @@
         .hidden { display: none; }
         
         .meta-info { font-size: 0.75rem; color: #888; }
+
