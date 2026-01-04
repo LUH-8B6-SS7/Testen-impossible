@@ -111,6 +111,10 @@
             align-items: center;
         }
 
+        #questionList {
+            flex-direction: column;
+        }
+
         .hidden { display: none; }
         
         .meta-info { font-size: 0.75rem; color: #888; }
