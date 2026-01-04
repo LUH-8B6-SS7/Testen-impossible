@@ -9,18 +9,19 @@
 </head>
 <body>
 
-    <div id="header" class="std card">
-
+	
+	<div id="header" class="std card">
 		<nav id="burger" class="burger" onclick="toggleMenu()">
 			<img src="menu-icon-open.png" alt="BURGER" style="width:30%;">
 		</nav>
-		<div id="burgermenu" class="burgermenu" style="display: none;">
-			<a href="coursesLecture.html" >Beitreten</a><br>
-			<a href="Questionpool.html" >Fragenpool</a><br>
-			<a href="feedback.html" >Feedback</a>
-		</div>
-        <h1>Fragen-pool</h1>
+		<div id="title" class="std">Fragen</div>
+			<div id="burgermenu" class="burgermenu" style="display: none;">
+				<a href="coursesLecture.html" >Beitreten</a><br>
+				<a href="Questionpool.html" >Fragenpool</a><br>
+				<a href="feedback.html" >Feedback</a>
+			</div>
 	</div>
+	
 	
 <div class="card std">
     <div class="header">
@@ -39,6 +40,9 @@
 </body>
 
 <script type="text/javascript" src="Questionpool.js"></script>
+
+<script type="text/javascript" src="couchdb.js"></script>
+<script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript" src="initBurgerButton.js"></script>
 
 </html>
