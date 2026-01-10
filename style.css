@@ -33,6 +33,12 @@ a{
     
 }
 
+.table{
+	padding: 16px;
+    border-radius: 12px;
+
+}
+
 .highlight{
 	padding: 12px;
     font-size: 14px;

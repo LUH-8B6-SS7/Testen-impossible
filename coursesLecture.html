@@ -19,56 +19,96 @@
             </div>
         </div>
 
-        <div id="courses" class="card std">
-
-            <div id="header" class="std card">
-
-			    <div id="title" class="std">Kursliste</div>
-
-		    </div>
-
-
-            <h3>Meine Kurse</h3>
-            <div>
-
-                <table>
-
-			        <tr id="table_head">
-				        <th>Kurse</th>
-				        <th>Teilnehmer</th>
-			        </tr>
-			        <tr>
-                        <td id="table_left"><a href="lecture.html">Grundlagen der Software-Technik</a></a></th>
-				        <td id="table_right">360</th>
-			        </tr>
-			        <tr>
-                        <td id="table_left"><a href="lecture.html">Grundlagen der IT-Sicherheit</a></th>
-				        <td id="table_right">348</th>
-			        </tr>
-			        <tr>
-                        <td id="table_left"><a href="lecture.html">Statistische Methoden der Data Science</a></th>
-				        <td id="table_right">217</th>
-			        </tr>
-			        <tr>
-                        <td id="table_left"><a href="lecture.html">Grundlagen der Mensch-Computer-Interaktion</a></th>
-				        <td id="table_right">358</th>
-			        </tr>
-			        <tr>
-                        <td id="table_left"><a href="lecture.html">Grundlagen der Theoretischen Informatik</a></th>
-				        <td id="table_right">471</th>
-			        </tr>
-                    <tr>
-                        <td id="table_left"><a href="lecture.html">Grundlagen der Betriebssysteme</a></th>
-				        <td id="table_right">381</th>
-			        </tr>
-
-                </table>
-
-                <button id="add" onclick="addNewCourse()">Hinzufügen +</button>
-
+        <div id="myConfig" class="modal">
+            <div class="modal-content">
+                <h2>Kurs konfiguriren</h2>
+                <h3 id="nameOfCourse"></h3>
+                <input type="text" id="newCourseName" placeholder="Geben Sie einen neuen Kursnamen ein">
             </div>
+            <div class="modal-button">
+                <button id="renameCourseButton" onclick="renameCourse()">Umbennen</button>
+                <button id="cancleCourseButton" onclick="exitCoursConfig()">Abbruch</button>
+            </div>
+        </div>
+
+
+        <div id="header" class="std card">
+
+		    <div id="title" class="std">Kursliste</div>
+
+	    </div>
+
+
+        <div id="table" class="std table">
+            <h3 id="header2">Meine Kurse</h3>
+
+            <table id="coursesTable">
+
+		        <tr id="table_head">
+			        <th>Kurse</th>
+			        <th>Teilnehmer</th>
+			    </tr>
+		        <tr>
+                    <td id="table_left">
+                        <a href="lecture.html#Grundlagen der Software-Technik">Grundlagen der Software-Technik</a>
+                        <button class="edit" name="Grundlagen der Software-Technik" onclick="openCoursConfig(this)">
+                            <img src="cog-icon.png">
+                        </button>
+                    </td>
+			        <td id="table_right">360</td>
+			    </tr>
+			    <tr>
+                    <td id="table_left">
+                        <a href="lecture.html#Grundlagen der IT-Sicherheit">Grundlagen der IT-Sicherheit</a>
+                        <button class="edit" name="Grundlagen der IT-Sicherheit" onclick="openCoursConfig(this)">
+                            <img src="cog-icon.png">
+                        </button>
+                    </td>
+			        <td id="table_right">348</td>
+		        </tr>
+			    <tr>
+                    <td id="table_left">
+                        <a href="lecture.html#Statistische Methoden der Data Science">Statistische Methoden der Data Science</a>
+                        <button class="edit" name="Statistische Methoden der Data Science" onclick="openCoursConfig(this)">
+                            <img src="cog-icon.png">
+                        </button>
+                    </td>
+			        <td id="table_right">217</td>
+		        </tr>
+		        <tr>
+                    <td id="table_left">
+                        <a href="lecture.html#Grundlagen der Mensch-Computer-Interaktion">Grundlagen der Mensch-Computer-Interaktion</a>
+                        <button class="edit" name="Grundlagen der Mensch-Computer-Interaktion" onclick="openCoursConfig(this)">
+                            <img src="cog-icon.png">
+                        </button>
+                    </td>
+			        <td id="table_right">358</td>
+		        </tr>
+		        <tr>
+                    <td id="table_left">
+                        <a href="lecture.html#Grundlagen der Theoretischen Informatik">Grundlagen der Theoretischen Informatik</a>
+                        <button class="edit" name="Grundlagen der Theoretischen Informatik" onclick="openCoursConfig(this)">
+                            <img src="cog-icon.png">
+                        </button>
+                    </td>
+				    <td id="table_right">471</td>
+			    </tr>
+                <tr>
+                    <td id="table_left">
+                        <a href="lecture.html#Grundlagen der Betriebssysteme">Grundlagen der Betriebssysteme</a>
+                        <button class="edit" name="Grundlagen der Betriebssysteme" onclick="openCoursConfig(this)">
+                            <img src="cog-icon.png">
+                        </button>
+                    </td>
+			        <td id="table_right">381</td>
+		        </tr>
+
+            </table>
+
+            <button id="add" onclick="addNewCourse()">Hinzufügen +</button>
 
         </div>
+
 
     </body>
 

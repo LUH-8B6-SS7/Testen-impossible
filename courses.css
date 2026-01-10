@@ -14,20 +14,23 @@
     text-align: center;
 }
 
+h3 {
+    color: rgba(0,0,0,0.75);
+}
+
 table{
     margin: 0 auto 20 auto;
     font-family: Arial, sans-serif;
-    border-collapse: collapse;
+    border-collapse: separate;
     width: 100%;
 }
 
 td, th {
-    border: 2px solid #dddddd;
+    border: 2px solid #34333347;
     padding: 16px;        
 }
 
 td {
-    margin-left: 50%;
     text-align: center;
 }
 
@@ -48,7 +51,36 @@ td:first-child a{
     text-decoration: none;
 }
 
-#add, #addCourseButton{
+td:first-child, .table_left {
+    display: flex;
+    align-items: center;
+}
+
+.edit {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.edit img {
+
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.edit:hover {
+    border: 1px solid #ccc;
+    background-color: #a7a5a5;
+}
+
+
+#add, #addCourseButton, #renameCourseButton{
     background-color: rgba(19, 171, 19, 0.75);
     color: #000;
     font-size: 16px;
@@ -59,7 +91,7 @@ td:first-child a{
     transition: background-color 0.3s;
 }
 
-#add:hover , #addCourseButton:hover{
+#add:hover , #addCourseButton:hover, #renameCourseButton:hover{
     background-color: rgba(19, 171, 19, 0.65);
     color: rgba(0,0,0,0.75);
 }
