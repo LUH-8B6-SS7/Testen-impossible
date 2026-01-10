@@ -113,3 +113,9 @@ function toggleMenu() { //Skript für das wechseln des Bildes für das Burger-Me
         		image.src = "menu-icon-open.png";
     		}
 		}
+
+function ChangeTitle() {
+    if(window.location.hash != ""){
+        document.getElementById("title").textContent = decodeURIComponent(window.location.hash.slice(1));
+    }
+}    
