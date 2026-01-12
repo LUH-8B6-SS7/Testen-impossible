@@ -88,6 +88,7 @@ a{
 #title {
     display: flex;
     align-items: center;
+	font-weight: bold;
 	flex-grow: 1;
 }
 
