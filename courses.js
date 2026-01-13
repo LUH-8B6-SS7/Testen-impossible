@@ -27,7 +27,7 @@ function addCourse() {
     var cell1 = newRow.insertCell(0);
     var cell2 = newRow.insertCell(1);
     cell1.innerHTML = `<a href="lecture.html#${courseName}">${courseName}</a> 
-                      <button class="edit" name="${courseName}" onclick="addNewCourse()">
+                      <button class="edit" name="${courseName}" onclick="openCoursConfig(this)">
                         <img src="cog-icon.png">
                       </button>`;
     cell2.innerHTML = "0"; // Default Teilnehmerzahl
