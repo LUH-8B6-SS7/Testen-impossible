@@ -37,3 +37,8 @@
 				padding-left: 10px;
 				left: -48%;
 			}
+
+			#title {
+				font-weight: bold;
+				font-family: "Arial Black", sans-serif;
+			}
