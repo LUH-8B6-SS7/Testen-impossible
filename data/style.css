@@ -1,0 +1,47 @@
+body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.card{
+    margin: 10px;
+    padding: 5px;
+    width: 100% - 20px;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+.tag{
+    border: none;
+    height: auto;
+    width: auto;
+    padding: 8px;
+    border-radius: 12px;
+
+    text-align: center;
+
+}
+
+.left{
+    margin-right: auto;
+    margin-left: 5px;
+}
+
+.right{
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+.yCenter{
+    align-self: center;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.burgerMenu{
+    position: absolute;
+}

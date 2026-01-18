@@ -1,0 +1,30 @@
+<div id="courseList" class="card">
+    Ich bin die Kursliste
+    <div id="addCourse">
+        Enter | send | (und hinter jedem kurs noch ein löschen anzeigen)
+    </div>
+</div>
+
+<script>
+    if(!("§VALUE§role§" == "Lecturer")) document.getElementById("addCourse").style.display = "none";
+    
+    //load courses
+    var request = new XMLHttpRequest();
+    request.open("GET", "api/myVar", true);
+    request.onreadystatechange = function(){
+        if(this.readyState == this.DONE){
+            if(this.status == 200 || this.status == 201){
+                console.log(this.responseText);
+            }  //success
+            else{  }
+            //400 = Bad Request
+            //409 = Conflict - _rev is most likly old
+        }
+    };
+    request.send();
+
+
+    var putMessage = new XMLHttpRequest();
+    putMessage.open("PUT", "api/myVar", true);
+    putMessage.send("neuer Wert");
+</script>
