@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 //JSON-Lib for java: https://github.com/stleary/JSON-java
@@ -8,11 +9,11 @@ import org.json.JSONArray;
 import netscape.javascript.JSObject;
 
 public class Database {
-    public static final boolean enableDebugInfo = false;
+    public static final boolean enableDebugInfo = true;
     public static final boolean enableGeneralInfo = true;
 
     public static void main(String[] args) throws Exception{
-        json = new JSONObject(readFile("data.json"));
+        json = new JSONObject(readTextFile("data.json"));
         if(Database.enableDebugInfo) System.out.println("Loaded data: " + json);
         
         Thread server = new Server();
@@ -59,7 +60,14 @@ public class Database {
         json.put(key, arr);
     }
 
-    public static String readFile(String filename) throws FileNotFoundException{
+
+
+    public static byte[] readFile(String filename) throws FileNotFoundException, IOException{
+        File file = new File("images/" + filename);
+        return Files.readAllBytes(file.toPath());
+    }
+
+    public static String readTextFile(String filename) throws FileNotFoundException{
         String fileContent = "";
         
         File file = new File("data/" + filename);
@@ -79,7 +87,7 @@ public class Database {
     }
 
     public static String getComposedFile(String filename, String[] param) throws FileNotFoundException{  //param: JSON mit allen sachen aus der URL
-        String composite = readFile(filename);
+        String composite = readTextFile(filename);
 
         String[] tokens = composite.split("§");
         String result = "";

@@ -7,62 +7,78 @@ import java.net.*;
 public class Client extends Thread{
     @Override
     public void run(){
+        System.out.println("new client on " + this);
+        
         try {
-            InputStream stream = socket.getInputStream();
-            String msg = "";
-            while(stream.available() > 0){
-                msg += (char)stream.read();
+            while (Server.running && socket.isConnected()) {
+                InputStream stream = socket.getInputStream();
+                String msg = "";
+                while(stream.available() > 0){
+                    msg += (char)stream.read();
+                }
+
+                if(msg.length() > 0){
+                    //System.out.println("\n\n" + msg);
+
+                    if(msg.contains("GET") && !msg.contains("api/")){
+                        int start = msg.indexOf("GET") + 5;
+                        int ende = msg.indexOf(' ', start);
+                        String url = msg.substring(start, ende);
+
+                        if(url.contains(".html")){
+                            String[] tokens = url.split("\\?");
+                            String[] param = new String[0];
+                            if(tokens.length > 1) param = tokens[1].split("&");
+
+
+                            if(Database.enableDebugInfo) System.out.println("\nRequested html on " + this + ":\nLength :" + url.length() + " Type: Get :: " + url);
+                            
+                            try {
+                                send(new Message(Database.getComposedFile(tokens[0], param)));
+                            } catch (FileNotFoundException e) {
+                                send(new Message(404, "File not found"));
+                            }
+                        }
+                        else{
+                            if(Database.enableDebugInfo) System.out.println("\nRequested image on " + this + ":\nLength :" + url.length() + " Type: Get :: " + url);
+                            try {
+                                String fileType = url.substring(url.indexOf(".") + 1);
+                                send(new Message("image/" + fileType, Database.readFile(url)));
+                            } catch (FileNotFoundException e) {
+                                send(new Message(404, "File not found"));
+                            }
+                        }
+                    }
+                    else if(msg.contains("api/")){
+                        int start = msg.indexOf("api/") + 4;
+                        int ende = msg.indexOf(' ', start);
+                        String key = msg.substring(start, ende);
+                        String body = msg.substring(msg.indexOf("\r\n\r\n") + 4);
+
+                        if(Database.enableDebugInfo) System.out.println("\napi request:" + msg.substring(start-9, ende) + " " + body);
+
+                        if(msg.contains("GET")){
+                            send(new Message(Database.get(key)));
+                        }
+                        if(msg.contains("PUT")){
+                            Database.set(key, body);
+                            send(new Message());
+                        }
+                        if(msg.contains("POST")){
+                            Database.add(key, body);
+                            send(new Message());
+                        }
+                        if(msg.contains("DELETE")){
+                            Database.remove(key, body);
+                            send(new Message());
+                        }
+
+                    }
+                    else{
+                        if(Database.enableDebugInfo) System.out.println("\nNew Message on " + this + ":\nLength :" + msg.length() + " Type: other ::\n" + msg);
+                    }
+                }
             }
-
-            if(msg.length() > 0){
-                if(msg.contains("GET") && !msg.contains("api/")){
-                    int start = msg.indexOf("GET") + 5;
-                    int ende = msg.indexOf(' ', start);
-                    String url = msg.substring(start, ende);
-                    String[] tokens = url.split("\\?");
-                    String[] param = new String[0];
-                    if(tokens.length > 1) param = tokens[1].split("&");
-
-
-                    if(Database.enableDebugInfo) System.out.println("\nNew Message on " + this + ":\nLength :" + url.length() + " Type: Get :: " + url);
-                    
-                    try {
-                        send(new Message(Database.getComposedFile(tokens[0], param)));
-                    } catch (FileNotFoundException e) {
-                        send(new Message(404, "File not found"));
-                    }
-                }
-                else if(msg.contains("api/")){
-                    int start = msg.indexOf("api/") + 4;
-                    int ende = msg.indexOf(' ', start);
-                    String key = msg.substring(start, ende);
-                    String body = msg.substring(msg.indexOf("\r\n\r\n") + 4);
-
-                    if(Database.enableDebugInfo) System.out.println("\napi request:" + msg.substring(start-9, ende) + " " + body);
-
-                    if(msg.contains("GET")){
-                        send(new Message(Database.get(key)));
-                    }
-                    if(msg.contains("PUT")){
-                        Database.set(key, body);
-                        send(new Message());
-                    }
-                    if(msg.contains("POST")){
-                        Database.add(key, body);
-                        send(new Message());
-                    }
-                    if(msg.contains("DELETE")){
-                        Database.remove(key, body);
-                        send(new Message());
-                    }
-
-                }
-                else{
-                    if(Database.enableDebugInfo) System.out.println("\nNew Message on " + this + ":\nLength :" + msg.length() + " Type: other ::\n" + msg);
-                }
-            }
-            
-
         } catch (Exception e) {
             System.out.println("\nClient " + this + " ran into a problem:\n" + e);
         }
