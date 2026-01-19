@@ -1,30 +1,21 @@
 <div id="courseList" class="card">
-    Ich bin die Kursliste
+    <table id="courseListTable">
+        <tr id="courseListTableHead">
+            <th>Kurse</th>
+            <!--th>Teilnehmer</th-->
+        </tr>
+
+    </table>
     <div id="addCourse">
-        Enter | send | (und hinter jedem kurs noch ein löschen anzeigen)
+        <button id="addCourseButton" class="button" style="background-color: green;" onclick="addCourseDialogOpen()">+ Hinzufügen</button>
     </div>
 </div>
 
-<script>
-    if(!("§VALUE§role§" == "Lecturer")) document.getElementById("addCourse").style.display = "none";
-    
-    //load courses
-    var request = new XMLHttpRequest();
-    request.open("GET", "api/myVar", true);
-    request.onreadystatechange = function(){
-        if(this.readyState == this.DONE){
-            if(this.status == 200 || this.status == 201){
-                console.log(this.responseText);
-            }  //success
-            else{  }
-            //400 = Bad Request
-            //409 = Conflict - _rev is most likly old
-        }
-    };
-    request.send();
 
-
-    var putMessage = new XMLHttpRequest();
-    putMessage.open("PUT", "api/myVar", true);
-    putMessage.send("neuer Wert");
-</script>
+<div id="addCourseDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; flex-direction: row; z-index: 1;">
+    <input type="text" id="newCourseName" placeholder="Kursnamen">
+    <div class="unblurred" style="white-space: nowrap;">
+        <button id="addCourseButton" class="button" style="background-color: green;" onclick="addCourse()">Hinzufügen</button>
+        <button id="cancleCourseButton" class="button" style="background-color: red;" onclick="addCourseDialogClose()">Abbrechen</button>
+    </div>
+</div>

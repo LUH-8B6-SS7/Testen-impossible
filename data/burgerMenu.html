@@ -1,6 +1,7 @@
 <div class="burgerMenu yCenter">
-    <img src="menu-icon-open.png" alt="BURGER" style="width:30%;">
-    <div class="dropdownArea" style="position: absolute;">
+    <img id="burgerMenuOpen" src="menu_open.png" alt="BURGER" style="width:1.2em;">
+    <img id="burgerMenuClose" src="menu_close.png" alt="BURGER" style="width:1.2em;">
+    <div id="burgerMenuDropdown" class="dropdownArea" style="position: absolute;">
         <a href="courseSelect.html?role=Student&course=MyCourse">Student</a>
         <a href="courseSelect.html?role=Lecturer&course=MyCourse">Lecturer</a>
         <a href="">Kursliste</a>
@@ -15,4 +16,28 @@
 <script>
     var burgerMenuExtended = false;
 
+    document.getElementById("burgerMenuOpen").addEventListener("click", (e) => { e.stopPropagation(); toggleBurgerMenu(); });
+    document.getElementById("burgerMenuClose").addEventListener("click", (e) => { e.stopPropagation(); toggleBurgerMenu(); });
+    document.getElementById("burgerMenuDropdown").addEventListener("click", (e) => { e.stopPropagation(); });
+    document.addEventListener('click', () => { burgerMenuExtended = false; updateBurgerMenuState(); });
+
+    updateBurgerMenuState();
+
+    function toggleBurgerMenu(){
+        burgerMenuExtended = !burgerMenuExtended;
+        updateBurgerMenuState();
+    }
+
+    function updateBurgerMenuState(){
+        if(burgerMenuExtended){
+            document.getElementById("burgerMenuOpen").style.display = "none";
+            document.getElementById("burgerMenuClose").style.display = "";
+            document.getElementById("burgerMenuDropdown").style.display = "";
+        }
+        else{
+            document.getElementById("burgerMenuOpen").style.display = "";
+            document.getElementById("burgerMenuClose").style.display = "none";
+            document.getElementById("burgerMenuDropdown").style.display = "none";
+        }
+    }
 </script>
