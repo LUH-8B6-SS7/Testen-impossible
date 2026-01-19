@@ -2,7 +2,6 @@
     <table id="courseListTable">
         <tr id="courseListTableHead">
             <th>Kurse</th>
-            <!--th>Teilnehmer</th-->
         </tr>
 
     </table>
@@ -12,9 +11,9 @@
 </div>
 
 
-<div id="addCourseDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; flex-direction: row; z-index: 1;">
-    <input type="text" id="newCourseName" placeholder="Kursnamen">
-    <div class="unblurred" style="white-space: nowrap;">
+<div id="addCourseDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; z-index: 1;">
+    <input type="text" id="newCourseName" placeholder="Kursnamen" style="grid-row: 1;">
+    <div class="unblurred" style="white-space: nowrap; grid-row: 2;">
         <button id="addCourseButton" class="button" style="background-color: green;" onclick="addCourse()">Hinzufügen</button>
         <button id="cancleCourseButton" class="button" style="background-color: red;" onclick="addCourseDialogClose()">Abbrechen</button>
     </div>

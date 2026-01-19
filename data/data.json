@@ -1,1 +1,1 @@
-{"courses":["KursA","KursB","KursC"],"myVar":"neuer Wert"}
+{"courses":["KursA","KursB","KursC"],"liveSessionQuestions_KursA":["{\"question\":\"Frage 1\",\"answered\":false}","{\"question\":\"Frage 2\",\"answered\":false}","{\"question\":\"Frage 3\",\"answered\":false}"],"liveSessionMood_KursA":[]}

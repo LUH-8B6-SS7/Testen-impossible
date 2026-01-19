@@ -53,7 +53,7 @@ function addCourseDialogOpen(){
         if(!divList[i].classList.contains("unblurred")) divList[i].classList.add("blurred");
     }
 
-    document.getElementById("addCourseDialog").style.display = "flex";
+    document.getElementById("addCourseDialog").style.display = "grid";
 }
 
 function addCourseDialogClose(){
