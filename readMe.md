@@ -1,7 +1,8 @@
 # Startup
-run compile.bat, then run.bat from the main git directory
+Run compile.bat, then run.bat from the main git directory.
+The JDK is expected.
 
 # Access the server
-the server runs on localhost:80/courseSelect.html?role=Lecturer&course=MyCourse
-
-This address is to be changed, once all pages are moved over
+Once the Server is running open:
+- Student[http://localhost/courseSelect.html?role=Student]
+- Lecturer[http://localhost/courseSelect.html?role=Lecturer]
