@@ -2,6 +2,25 @@ if(!(role == "Lecturer")){
     document.getElementById("burgerMenuKurslisteQRCodeLink").style.display = "none";
 }
 
+checkForValidCourse();
+
+async function checkForValidCourse(){
+    var coursesRaw = await dbGet("courses");
+    var courses = JSON.parse(coursesRaw);
+
+    var b = false;
+    courses.forEach(course => {
+        if(course === "§VALUE§course§") b = true;
+    });
+
+    if(!b){
+        var linkList = document.getElementsByClassName("burgerMenuLinkNotCourseList");
+        for(i = 0; i < linkList.length; i++){
+            linkList[i].style.display = "none"
+        }
+    }
+}
+
 
 var burgerMenuExtended = false;
 

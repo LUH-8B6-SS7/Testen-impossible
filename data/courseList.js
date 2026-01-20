@@ -7,7 +7,6 @@ loadCourses();
 async function loadCourses(){
     var coursesRaw = await dbGet("courses");
     var courses = JSON.parse(coursesRaw);
-    console.log(courses);
 
     courses.forEach(course => {
         addCourseToCourselist(course);
@@ -40,8 +39,6 @@ async function addCourse(){
 }
 
 async function removeCourse(name) {
-    console.log("Removing course");
-
     dbRemove("courses", name);
 
     document.getElementById("courseListTable").removeChild(document.getElementById("courseListZeile" + name));

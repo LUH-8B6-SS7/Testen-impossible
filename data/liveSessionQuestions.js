@@ -17,7 +17,8 @@ document.getElementById("liveSessionQuestionsSendButton").addEventListener("clic
 
     var obj = {
         "question": text,
-        "answered": false
+        "answered": false,
+        "answere": ""
     };
 
     dbAdd("liveSessionQuestions_§VALUE§course§", JSON.stringify(obj));
