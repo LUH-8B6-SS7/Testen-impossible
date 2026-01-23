@@ -55,8 +55,9 @@ function updateLiveSessionQuestionsTable(){
 
             var bt1 = document.createElement("button");
             bt1.classList.add("button");
+            bt1.classList.add("normal");
             bt1.innerHTML = "Beantwortet";
-            bt1.style.backgroundColor = "green"
+            
             bt1.style.gridColumn = "2";
             bt1.addEventListener("click", () =>{
                 dbRemove("liveSessionQuestions_§VALUE§course§", JSON.stringify(entry));
@@ -67,8 +68,9 @@ function updateLiveSessionQuestionsTable(){
 
             var bt2 = document.createElement("button");
             bt2.classList.add("button");
+            bt2.classList.add("red");
             bt2.innerHTML = "Entfernen";
-            bt2.style.backgroundColor = "red"
+            
             bt2.style.gridColumn = "3";
             bt2.addEventListener("click", () =>{
                 dbRemove("liveSessionQuestions_§VALUE§course§", JSON.stringify(entry));
