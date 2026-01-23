@@ -71,7 +71,7 @@ function addQuestionsToList(elementRaw){
     remove.innerHTML = "Entfernen";
     remove.classList.add("button");
     remove.classList.add("right");
-    remove.style.backgroundColor = "red"
+    remove.classList.add("red");
     remove.style.gridColumn = "2";
     remove.style.gridRow = "1";
     remove.addEventListener("click", () => {
@@ -94,7 +94,7 @@ function addQuestionsToList(elementRaw){
     send.innerHTML = "Antworten";
     send.classList.add("button");
     send.classList.add("right");
-    send.style.backgroundColor = "green"
+    send.classList.add("normal");
     send.style.gridColumn = "2";
     send.style.gridRow = "2";
     send.addEventListener("click", () => {

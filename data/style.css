@@ -21,7 +21,7 @@ h2{
     margin: 10px;
     padding: 5px;
     width: 100% - 20px;
-    background-color: lightblue;
+    background-color: lavender;
     border-radius: 10px;
 }
 
@@ -35,7 +35,7 @@ h2{
     width: auto;
     padding: 8px;
     border-radius: 12px;
-
+    background-color: cornflowerblue;
     text-align: center;
 }
 
@@ -46,9 +46,26 @@ h2{
     font-size: 1em;
 }
 
+.normal{
+    background-color: antiquewhite;
+}
+
+.green{
+    background-color: lightgreen;
+}
+
+.red{
+    background-color: lightcoral;
+}
+
+.blue{
+    background-color: cornflowerblue;
+}
+
 .button:hover{
     transition: 500ms;
     transform: translateY(-10%);
+    background-color: mediumorchid;
 }
 
 .dropdownArea{
@@ -108,11 +125,11 @@ table{
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: mintcream;
 }
 
 tr:nth-child(odd) {
-    background-color: #eeeeee;
+    background-color: whitesmoke;
 }
 
 .blurred {
@@ -123,6 +140,7 @@ tr:nth-child(odd) {
 #moodDiagramm{
     display: grid;
     grid-template-columns: auto 1fr;
+    background-color: mintcream;
 }
 
 .moodDiagrammRow{
