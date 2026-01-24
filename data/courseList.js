@@ -29,8 +29,10 @@ async function loadCourses(){
 function addCourseToCourselist(courseName){
     var zeile = document.createElement("tr");
     var spalte1 = document.createElement("td");
+
     var htmlContent = "<div style=\"display: grid; grid-template-columns: 1fr auto;\"><a href=\"liveSession.html?role=" + role + "&course=" + courseName + "\" class=\"yCenter textHighlight\" style=\"grid-column: 1;\">" + courseName + "</a>";
-    if(role == "Lecturer") htmlContent += " <button class=\"button right\" style=\"background-color: red; grid-column: 2;\" onclick=\"removeCourse('" + courseName + "')\">Entfernen</button>";
+    if(role == "Lecturer") htmlContent += " <button class=\"button red right\" style=\"grid-column: 2;\" onclick=\"removeCourse('" + courseName + "')\">Entfernen</button>";
+
     htmlContent += " </div>";
     spalte1.innerHTML = htmlContent;
 

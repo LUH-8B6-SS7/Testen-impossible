@@ -5,7 +5,7 @@
         </tr>
     </table>
     <div id="addCourse">
-        <button class="button" style="background-color: green;" onclick="addCourseDialogOpen()">+ Hinzufügen</button>
+        <button class="button normal" onclick="addCourseDialogOpen()">+ Hinzufügen</button>
     </div>
 </div>
 
@@ -13,7 +13,7 @@
 <div id="addCourseDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; z-index: 1;">
     <input type="text" id="newCourseName" placeholder="Kursnamen" style="grid-row: 1;">
     <div class="unblurred" style="white-space: nowrap; grid-row: 2;">
-        <button id="addCourseButton" class="button" style="background-color: green;" onclick="addCourse()">Hinzufügen</button>
-        <button id="cancleCourseButton" class="button" style="background-color: red;" onclick="addCourseDialogClose()">Abbrechen</button>
+        <button id="addCourseButton" class="button green"  onclick="addCourse()">Hinzufügen</button>
+        <button id="cancleCourseButton" class="button red" onclick="addCourseDialogClose()">Abbrechen</button>
     </div>
 </div>

@@ -45,7 +45,7 @@ function addfeedbackToList(feedback){
     remove.innerHTML = "Entfernen";
     remove.classList.add("button");
     remove.classList.add("right");
-    remove.style.backgroundColor = "red"
+    remove.classList.add("red");
     remove.style.gridColumn = "2";
     remove.addEventListener("click", () => {
         dbRemove("feedback_§VALUE§course§", feedback);
