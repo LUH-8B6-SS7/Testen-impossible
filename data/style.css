@@ -27,6 +27,16 @@ h2{
 
 .cardEnter{
     display: grid;
+    border: rgb(91, 147, 165) solid 5px;
+}
+
+.textHighlight{
+    transition: 200ms ease-in-out;
+}
+
+.textHighlight:hover{
+    transition: 200ms ease-in-out;
+    color: rgb(1, 210, 186);
 }
 
 .tag{
@@ -44,6 +54,7 @@ h2{
     padding: 5px;
     border-radius: 10px;
     font-size: 1em;
+    transition: 500ms;
 }
 
 .button:hover{
@@ -118,6 +129,10 @@ tr:nth-child(odd) {
 .blurred {
     filter: blur(2px);
     pointer-events:none;
+}
+
+#headerHeading{
+    white-space: nowrap;
 }
 
 #moodDiagramm{

@@ -10,6 +10,20 @@ else{
 
 //--- Student ---
 document.getElementById("liveSessionQuestionsSendButton").addEventListener("click", () => {
+    liveSessionQuestionsSend()
+});
+
+//on pressing enter
+document.getElementById("liveSessionQuestionsSendText").addEventListener("keydown", (event) => {
+    if(event.keyCode === 13){
+        event.preventDefault();
+        event.stopPropagation();
+
+        liveSessionQuestionsSend();
+    }
+});
+
+function liveSessionQuestionsSend(){
     var text = document.getElementById("liveSessionQuestionsSendText").value;
     if(text == "") return;
 
@@ -22,7 +36,7 @@ document.getElementById("liveSessionQuestionsSendButton").addEventListener("clic
     };
 
     dbAdd("liveSessionQuestions_§VALUE§course§", JSON.stringify(obj));
-});
+}
 
 
 

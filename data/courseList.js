@@ -2,11 +2,24 @@ if(!(role == "Lecturer")) document.getElementById("addCourse").style.display = "
     
 
 loadCourses();
+//intervalSubscribe(loadCourses);
+
+//on pressing enter
+document.getElementById("newCourseName").addEventListener("keydown", (event) => {
+    if(event.keyCode === 13){
+        event.preventDefault();
+        event.stopPropagation();
+
+        addCourse();
+    }
+});
 
 
 async function loadCourses(){
     var coursesRaw = await dbGet("courses");
     var courses = JSON.parse(coursesRaw);
+
+    document.getElementById("courseListTable").innerHTML = "<tr><th>Kurse</th></tr>";
 
     courses.forEach(course => {
         addCourseToCourselist(course);
@@ -16,7 +29,7 @@ async function loadCourses(){
 function addCourseToCourselist(courseName){
     var zeile = document.createElement("tr");
     var spalte1 = document.createElement("td");
-    var htmlContent = "<div style=\"display: grid; grid-template-columns: 1fr auto;\"><a href=\"liveSession.html?role=" + role + "&course=" + courseName + "\" class=\"yCenter\" style=\"grid-column: 1;\">" + courseName + "</a>";
+    var htmlContent = "<div style=\"display: grid; grid-template-columns: 1fr auto;\"><a href=\"liveSession.html?role=" + role + "&course=" + courseName + "\" class=\"yCenter textHighlight\" style=\"grid-column: 1;\">" + courseName + "</a>";
     if(role == "Lecturer") htmlContent += " <button class=\"button right\" style=\"background-color: red; grid-column: 2;\" onclick=\"removeCourse('" + courseName + "')\">Entfernen</button>";
     htmlContent += " </div>";
     spalte1.innerHTML = htmlContent;

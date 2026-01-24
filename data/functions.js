@@ -1,3 +1,11 @@
+//Debug option: keep to disable
+//*
+var debugOptionList = document.getElementsByClassName("debugOption");
+for(i = 0; i < debugOptionList.length; i++){
+    debugOptionList[i].style.display = "none";
+}
+//*/
+
 //Var
 const moodTimeout = 10000;  //ms
 sendRequestRetries = 10;  //max attempts to send a message

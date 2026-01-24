@@ -3,11 +3,12 @@ Connection is droped after response to avoid waiting on abandoned connection
 */
 import java.io.*;
 import java.net.*;
+import java.nio.file.NoSuchFileException;
 
 public class Client extends Thread{
     @Override
     public void run(){
-        System.out.println("new client on " + this);
+        if(Database.enableDebugInfo) System.out.println("new client on " + this);
         
         try {
             while (Server.running && socket.isConnected()) {
@@ -35,7 +36,7 @@ public class Client extends Thread{
                             
                             try {
                                 send(new Message(Database.getComposedFile(tokens[0], param)));
-                            } catch (FileNotFoundException e) {
+                            } catch (NoSuchFileException e) {
                                 send(new Message(404, "File not found"));
                             }
                         }
@@ -44,7 +45,7 @@ public class Client extends Thread{
                             try {
                                 String fileType = url.substring(url.indexOf(".") + 1);
                                 send(new Message("image/" + fileType, Database.readFile(url)));
-                            } catch (FileNotFoundException e) {
+                            } catch (NoSuchFileException e) {
                                 send(new Message(404, "File not found"));
                             }
                         }

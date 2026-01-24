@@ -1,10 +1,3 @@
-/*
-var voteUp = document.createElement("button");
-voteUp.innerHTML = "Daum hoch";
-voteUp.classList.add("button");
-voteUp.classList.add("right");
-*/
-
 if(role == "Lecturer"){
     document.getElementById("questionPoolSend").style.display = "none";
 }
@@ -13,10 +6,25 @@ else{
 }
 
 updateQuestionPool();
-//intervalSubscribe(updateQuestionPool);
+intervalSubscribe(updateQuestionPool);
 
+//on pressing enter
+document.getElementById("questionPoolSendText").addEventListener("keydown", (event) => {
+    if(event.keyCode === 13){
+        event.preventDefault();
+        event.stopPropagation();
+
+        addQuestionsToQuestionPool();
+    }
+});
 
 document.getElementById("questionPoolSendButton").addEventListener("click", () => {
+    addQuestionsToQuestionPool();
+});
+
+
+
+function addQuestionsToQuestionPool(){
     var text = document.getElementById("questionPoolSendText").value;
     if(text == "") return;
 
@@ -29,7 +37,7 @@ document.getElementById("questionPoolSendButton").addEventListener("click", () =
     };
 
     questionPoolUploadQuestion(JSON.stringify(obj));
-});
+}
 
 async function questionPoolUploadQuestion(str){
     await dbAdd("liveSessionQuestions_§VALUE§course§", str);

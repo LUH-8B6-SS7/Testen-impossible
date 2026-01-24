@@ -1,6 +1,6 @@
 # Startup
 Run compile.bat, then run.bat from the main git directory.
-The JDK is expected.
+To run the commands JDK and JRE version 25 or higher are needed.
 
 # Access the server
 Once the Server is running open:

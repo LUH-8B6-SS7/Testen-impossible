@@ -39,22 +39,6 @@ function init(){
 }
 
 
-async function senden() {
-	var input = document.getElementById("frage-input");
-	
-	if (input.value.trim() === ""){
-		return;
-	}
-	
-	dbAdd("questionPool", {
-		"question": input.value.trim(),
-		"answered": false
-	});
-
-	input.value = "";
-}
-
-
 //--- Lecturer ---
 var moodList  = null;
 

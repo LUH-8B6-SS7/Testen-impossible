@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import netscape.javascript.JSObject;
 
 public class Database {
-    public static final boolean enableDebugInfo = true;
+    public static final boolean enableDebugInfo = false;
     public static final boolean enableGeneralInfo = true;
 
     public static void main(String[] args) throws Exception{
@@ -87,6 +87,19 @@ public class Database {
     }
 
     public static String getComposedFile(String filename, String[] param) throws FileNotFoundException{  //param: JSON mit allen sachen aus der URL
+        //space is ransmitted as %20
+        for(int i = 0; i < param.length; i++){
+            int index = param[i].indexOf("%20");
+            while(index != -1){
+                String firstHalf = param[i].substring(0, index);
+                String lastHalf = param[i].substring(index+3);
+                param[i] = firstHalf + " " + lastHalf;
+
+                index = param[i].indexOf("%20");
+            }
+        }
+
+
         String composite = readTextFile(filename);
 
         String[] tokens = composite.split("§");

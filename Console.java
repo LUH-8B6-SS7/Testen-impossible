@@ -6,7 +6,7 @@ public class Console extends Thread{
     
     @Override
     public void run(){
-        if(Database.enableGeneralInfo) System.out.println("use exit or q to shut down the server");
+        if(Database.enableGeneralInfo) System.out.println("enter exit or q to shut down the server");
 
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

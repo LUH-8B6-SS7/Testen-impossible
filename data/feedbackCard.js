@@ -4,6 +4,16 @@ if(role == "Lecturer") document.getElementById("addFeedback").style.display = "n
 loadFeedback();
 intervalSubscribe(loadFeedback);
 
+//on pressing enter
+document.getElementById("newFeedback").addEventListener("keydown", (event) => {
+    if(event.keyCode === 13){
+        event.preventDefault();
+        event.stopPropagation();
+
+        addFeedback();
+    }
+});
+
 
 async function loadFeedback(){
     var feedbackRaw = await dbGet("feedback_§VALUE§course§");
