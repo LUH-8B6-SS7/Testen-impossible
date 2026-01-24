@@ -1,5 +1,7 @@
 if(!(role == "Lecturer")) document.getElementById("addCourse").style.display = "none";
-    
+
+
+renameCourseOldName = "";
 
 loadCourses();
 //intervalSubscribe(loadCourses);
@@ -27,21 +29,48 @@ async function loadCourses(){
 }
 
 function addCourseToCourselist(courseName){
-    var zeile = document.createElement("tr");
-    var spalte1 = document.createElement("td");
+    var row = document.createElement("tr");
+    row.id = "courseListZeile" + courseName;
 
-    var htmlContent = "<div style=\"display: grid; grid-template-columns: 1fr auto;\"><a href=\"liveSession.html?role=" + role + "&course=" + courseName + "\" class=\"yCenter textHighlight\" style=\"grid-column: 1;\">" + courseName + "</a>";
-    if(role == "Lecturer") htmlContent += " <button class=\"button red right\" style=\"grid-column: 2;\" onclick=\"removeCourse('" + courseName + "')\">Entfernen</button>";
+    var col = document.createElement("td");
+    col.style.display = "grid";
+    col.style.gridTemplateColumns = "1fr auto auto";
 
-    htmlContent += " </div>";
-    spalte1.innerHTML = htmlContent;
+    var link = document.createElement("a");
+    link.href = "liveSession.html?role=" + role + "&course=" + courseName;
+    link.classList.add("yCenter");
+    link.classList.add("textHighlight");
+    link.style.gridColumn = "1";
+    link.innerHTML = courseName;
 
-    zeile.id = "courseListZeile" + courseName;
+    var edit = document.createElement("button");
+    edit.classList.add("button");
+    edit.classList.add("right");
+    edit.classList.add("normal");
+    edit.style.gridColumn = "2";
+    edit.innerHTML = "Umbenennen";
+    edit.addEventListener("click", () => { renameCourseOldName = courseName; renameCourseDialogOpen(); });
 
-    zeile.appendChild(spalte1);
+    var remove = document.createElement("button");
+    remove.classList.add("button");
+    remove.classList.add("right");
+    remove.classList.add("red");
+    remove.style.gridColumn = "3";
+    remove.innerHTML = "Entfernen";
+    remove.addEventListener("click", () => { removeCourse(courseName); });
 
-    document.getElementById("courseListTable").appendChild(zeile);
+    col.appendChild(link);
+    if(role == "Lecturer"){
+        col.appendChild(edit);
+        col.appendChild(remove);
+    }
+
+    row.appendChild(col);
+
+    document.getElementById("courseListTable").appendChild(row);
 }
+
+
 
 async function addCourse(){
     var newName = document.getElementById("newCourseName").value;
@@ -55,6 +84,28 @@ async function addCourse(){
 
 async function removeCourse(name) {
     dbRemove("courses", name);
+
+    var liveSessionQuestions = await dbGet("liveSessionQuestions_" + name);
+    var feedback = await dbGet("feedback_" + name);
+    var liveSessionMood = await dbGet("liveSessionMood_" + name);
+
+    if(liveSessionQuestions != null){
+        JSON.parse(liveSessionQuestions).forEach(element => {
+            dbRemove("liveSessionQuestions_" + name, element);
+        });
+    }
+    
+    if(feedback != null){
+        JSON.parse(feedback).forEach(element => {
+            dbRemove("feedback_" + name, element);
+        });
+    }
+    
+    if(liveSessionMood != null){
+        JSON.parse(liveSessionMood).forEach(element => {
+            dbRemove("liveSessionMood_" + name, element);
+        });
+    }
 
     document.getElementById("courseListTable").removeChild(document.getElementById("courseListZeile" + name));
 }
@@ -75,4 +126,66 @@ function addCourseDialogClose(){
     }
 
     document.getElementById("addCourseDialog").style.display = "none";
+}
+
+
+
+async function renameCourse(){
+    var newName = document.getElementById("renameCourseName").value;
+    if(newName === "") return;
+    if(renameCourseOldName === "") return;
+
+    //add new course
+    dbAdd("courses", newName);
+    addCourseToCourselist(newName);
+    
+    //copy data
+    var liveSessionQuestions = await dbGet("liveSessionQuestions_" + renameCourseOldName);
+    var feedback = await dbGet("feedback_" + renameCourseOldName);
+    var liveSessionMood = await dbGet("liveSessionMood_" + renameCourseOldName);
+
+    if(liveSessionQuestions != null){
+        JSON.parse(liveSessionQuestions).forEach(element => {
+            dbAdd("liveSessionQuestions_" + newName, element);
+        });
+    }
+    
+    if(feedback != null){
+        JSON.parse(feedback).forEach(element => {
+            dbAdd("feedback_" + newName, element);
+        });
+    }
+    
+    if(liveSessionMood != null){
+        JSON.parse(liveSessionMood).forEach(element => {
+            dbAdd("liveSessionMood_" + newName, element);
+        });
+    }
+
+    //remove old course
+    removeCourse(renameCourseOldName);
+
+
+    document.getElementById("renameCourseName").value = "";
+    renameCourseOldName = "";
+
+    renameCourseDialogClose();
+}
+
+function renameCourseDialogOpen(){
+    var divList = document.getElementsByTagName("div");
+    for(i = 0; i < divList.length; i++){
+        if(!divList[i].classList.contains("unblurred")) divList[i].classList.add("blurred");
+    }
+
+    document.getElementById("renameCourseDialog").style.display = "grid";
+}
+
+function renameCourseDialogClose(){
+    var divList = document.getElementsByTagName("div");
+    for(i = 0; i < divList.length; i++){
+        divList[i].classList.remove("blurred");
+    }
+
+    document.getElementById("renameCourseDialog").style.display = "none";
 }

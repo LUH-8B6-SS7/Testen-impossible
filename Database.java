@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import netscape.javascript.JSObject;
 
 public class Database {
-    public static final boolean enableDebugInfo = false;
+    public static final boolean enableDebugInfo = true;
     public static final boolean enableGeneralInfo = true;
 
     public static void main(String[] args) throws Exception{

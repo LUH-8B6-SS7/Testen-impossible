@@ -59,6 +59,11 @@ public class Client extends Thread{
                         if(Database.enableDebugInfo) System.out.println("\napi request:" + msg.substring(start-9, ende) + " " + body);
 
                         if(msg.contains("GET")){
+                            try {
+                                send(new Message(Database.get(key)));
+                            } catch (Exception e) {
+                                send(new Message(404, "Data not found"));
+                            }
                             send(new Message(Database.get(key)));
                         }
                         if(msg.contains("PUT")){
@@ -74,6 +79,7 @@ public class Client extends Thread{
                             send(new Message());
                         }
 
+                        break;
                     }
                     else{
                         if(Database.enableDebugInfo) System.out.println("\nNew Message on " + this + ":\nLength :" + msg.length() + " Type: other ::\n" + msg);
