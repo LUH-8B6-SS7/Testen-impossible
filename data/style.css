@@ -1,3 +1,49 @@
+.textHighlight{
+    transition: 200ms ease-in-out;
+}
+
+.textHighlight:hover{
+    transition: 200ms ease-in-out;
+    color: #ba55d3;
+}
+
+.left{
+    margin-right: auto;
+    margin-left: 5px;
+}
+
+.right{
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+.yCenter{
+    align-self: center;
+}
+
+.absoluteCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.normal{
+    background-color: #faebd7;
+}
+
+.green{
+    background-color: #90ee90;
+}
+
+.red{
+    background-color: #f08080;
+}
+
+.blue{
+    background-color: #6495ed;
+}
+
 body{
     width: 100%;
     min-width: 420px;
@@ -30,15 +76,6 @@ h2{
     border: rgb(91, 147, 165) solid 5px;
 }
 
-.textHighlight{
-    transition: 200ms ease-in-out;
-}
-
-.textHighlight:hover{
-    transition: 200ms ease-in-out;
-    color: rgb(1, 210, 186);
-}
-
 .tag{
     border: none;
     height: auto;
@@ -57,55 +94,18 @@ h2{
     transition: 500ms;
 }
 
-.normal{
-    background-color: antiquewhite;
-}
-
-.green{
-    background-color: lightgreen;
-}
-
-.red{
-    background-color: lightcoral;
-}
-
-.blue{
-    background-color: cornflowerblue;
-}
-
 .button:hover{
     transition: 500ms;
     transform: translateY(-10%);
-    background-color: mediumorchid;
+    background-color: #ba55d3;
 }
 
 .dropdownArea{
     padding: 5px;
     width: auto;
-    background-color: lightgrey;
+    background-color: #d3d3d3;
     border-radius: 10px;
     text-align: center;
-}
-
-.left{
-    margin-right: auto;
-    margin-left: 5px;
-}
-
-.right{
-    margin-right: 5px;
-    margin-left: auto;
-}
-
-.yCenter{
-    align-self: center;
-}
-
-.absoluteCenter{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 input{
