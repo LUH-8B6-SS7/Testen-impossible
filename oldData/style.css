@@ -1,0 +1,185 @@
+body{
+	margin: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+div{
+	min-height: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+	width: 100%;
+	text-align: center;
+}
+
+.std{
+	margin: 10px;
+	padding: 10px;
+	background-color: lavender;
+	
+}
+
+.card{
+	display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: auto;
+	padding: 16px;
+    border-radius: 12px;
+    
+}
+
+.table{
+	padding: 16px;
+    border-radius: 12px;
+
+}
+
+.highlight{
+	padding: 12px;
+    font-size: 14px;
+	border: 2px solid black;
+    border-radius: 8px;
+    background-color: antiquewhite;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.highlight:hover{
+	background-color: lightgreen;
+    transform: translateY(-2px);
+}
+/*
+.burger{
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.burgermenu{
+	display: none;;
+}
+
+.burgermenu.open{
+	margin-bottom: 20px;
+	display: block;
+}
+
+#burger-icon {
+	width: 36px;
+	height: 36px;
+	object-fit: contain;
+	display: block;
+}
+*/
+/*Extra Styling für das Burger-Menu*/
+
+#header {
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+	font-weight: bold;
+	flex-grow: 1;
+}
+
+#burger {
+	position: absolute; /* Absolut Position in der Div */
+    left: 10px; /* Abstand zum linken Rand */
+    margin-top: 15px; /* Abstand nach Oben */
+}
+
+.burgermenu {
+	display: none;
+	position: relative;
+	font-weight: bold;
+}
+
+.burgermenu a {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.burgermenu a:last-child {
+	margin-bottom: 0px;
+}
+
+.burgermenu , .burgermenu a {
+	text-align: left;
+	padding-left: 10px;
+	left: -48%;
+}
+
+.stimmung-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.stimmung-btn {
+	padding: 12px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+.stimmung-btn.active {
+    background-color: mediumorchid;
+    box-shadow: 0 0 12px rgba(186, 85, 211, 0.8);
+    transform: scale(1.03);
+}
+
+/* Stil für deaktivierte Stimmungsknöpfe während eine Auswahl aktiv ist */
+.stimmung-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	filter: grayscale(20%);
+}
+
+.bar-container {
+	width: 90%;
+	max-width: auto;
+	height: 200px;
+	border: 1px solid #ccc;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 10px;
+	gap: 10px;
+}
+.bar {
+	background-color: mediumorchid;
+	height: 30px;
+	transition: width 0.5s ease-in-out;
+	display: flex;
+	align-items: center;
+	padding-left: 5px;
+}
+
+  /* Eine Zeile: Besteht aus Label + Balken */
+  .bar-row {
+    display: flex;
+    align-items: left; /* Vertikal zentrieren */
+  }
+
+  /* Die Beschriftung links */
+  .bar-label {
+    width: 80px; /* Feste Breite für die Namen */
+	max-width: 100px;
+    text-align: right;
+    margin-right: 15px;
+    font-weight: bold;
+  }
+
+  #gelesen{
+	margin-right: 10%;
+  }
