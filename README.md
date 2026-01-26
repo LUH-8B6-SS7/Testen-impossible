@@ -1,9 +1,10 @@
-# Testen_impossible
+#Testen-impossible
 
-Für die Nutzung des Tool ist es erforderlich CouchDB zu verwenden.
+# Startup
+Run compile.bat, then run.bat from the main git directory.
+To run the commands JDK and JRE version 25 or higher are needed.
 
-Zum Staten des Tools
-
-    a) als Dozent: die Datei coursesLecture.html öffnen
-  
-    b) als Student: die Datei courses.html öffnen
+# Access the server
+Once the Server is running open:
+- [Student](http://localhost/courseSelect.html?role=Student)
+- [Lecturer](http://localhost/courseSelect.html?role=Lecturer)
