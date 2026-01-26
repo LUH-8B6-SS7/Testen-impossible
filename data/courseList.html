@@ -1,0 +1,27 @@
+<div id="courseList" class="card">
+    <table id="courseListTable">
+        <tr>
+            <th>Kurse</th>
+        </tr>
+    </table>
+    <div id="addCourse">
+        <button class="button normal" onclick="addCourseDialogOpen()">+ Hinzufügen</button>
+    </div>
+</div>
+
+
+<div id="addCourseDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; z-index: 1;">
+    <input type="text" id="newCourseName" placeholder="Kursname" style="grid-row: 1;">
+    <div class="unblurred" style="white-space: nowrap; grid-row: 2;">
+        <button id="addCourseButton" class="button green"  onclick="addCourse()">Hinzufügen</button>
+        <button id="cancleCourseButton" class="button red" onclick="addCourseDialogClose()">Abbrechen</button>
+    </div>
+</div>
+
+<div id="renameCourseDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; z-index: 1;">
+    <input type="text" id="renameCourseName" placeholder="Kursname" style="grid-row: 1;">
+    <div class="unblurred" style="white-space: nowrap; grid-row: 2;">
+        <button id="renameCourseButton" class="button green"  onclick="renameCourse()">Umbenennen</button>
+        <button id="cancleRenameCourseButton" class="button red" onclick="renameCourseDialogClose()">Abbrechen</button>
+    </div>
+</div>

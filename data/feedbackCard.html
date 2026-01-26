@@ -1,0 +1,19 @@
+<div id="feedback" class="card">
+    <table id="feedbackTable">
+        <tr>
+            <th>Feedback</th>
+        </tr>
+    </table>
+    <div id="addFeedback">
+        <button class="button normal"  onclick="addFeedbackDialogOpen()">+ Hinzufügen</button>
+    </div>
+</div>
+
+
+<div id="addFeedbackDialog" class="card cardEnter absoluteCenter unblurred" style="display: none; z-index: 1;">
+    <input type="text" id="newFeedback" placeholder="Feedback" style="grid-row: 1;">
+    <div class="unblurred" style="white-space: nowrap; grid-row: 2;">
+        <button id="addFeedbackButton" class="button green" onclick="addFeedback()">Hinzufügen</button>
+        <button id="cancleFeedbackButton" class="button red"  onclick="addFeedbackDialogClose()">Abbrechen</button>
+    </div>
+</div>
